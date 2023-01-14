@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 export const Box = styled.div`
   max-width: 1600px;
   margin: 0 auto;
+  padding: 0 15px;
 `;
 
 export const Header = styled.header`
