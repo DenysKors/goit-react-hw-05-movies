@@ -17,3 +17,11 @@ export const getMovieById = async movieId => {
   );
   return responce.data;
 };
+
+export const getMovieCast = async movieId => {
+  const apiParams = new URLSearchParams({ api_key: API_KEY });
+  const responce = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/credits?${apiParams}`
+  );
+  return responce.data;
+};
