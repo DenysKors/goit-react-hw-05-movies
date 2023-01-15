@@ -7,6 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 code {
@@ -16,6 +17,11 @@ code {
 
 img {
   display: block;
-  max-width: 100%;
+  width: 100%;
   height: auto;
+  object-fit: cover;
+}
+
+ul {
+  list-style-type: none;
 }

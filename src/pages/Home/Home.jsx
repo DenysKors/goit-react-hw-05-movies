@@ -11,18 +11,20 @@ export const Home = () => {
 
   return (
     <>
-      <h2>Trending today</h2>
-      <ul>
-        {trendingMovies.map(movie => (
-          <li key={movie.id}>
-            <Link>
-              {movie.original_title
-                ? movie.original_title
-                : movie.original_name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <main>
+        <h2>Trending today</h2>
+        <ul>
+          {trendingMovies.map(movie => (
+            <li key={movie.id}>
+              <Link to={`/movies/${movie.id}`}>
+                {movie.original_title
+                  ? movie.original_title
+                  : movie.original_name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </main>
     </>
   );
 };

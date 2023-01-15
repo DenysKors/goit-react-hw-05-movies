@@ -9,3 +9,11 @@ export const getTrendingMovies = async () => {
   );
   return responce.data;
 };
+
+export const getMovieById = async movieId => {
+  const apiParams = new URLSearchParams({ api_key: API_KEY });
+  const responce = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}?${apiParams}`
+  );
+  return responce.data;
+};
