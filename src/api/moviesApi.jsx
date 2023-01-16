@@ -33,3 +33,11 @@ export const getMovieReviews = async movieId => {
   );
   return responce.data;
 };
+
+export const getMovieByName = async query => {
+  const apiParams = new URLSearchParams({ api_key: API_KEY });
+  const responce = await axios.get(
+    `https://api.themoviedb.org/3/search/movie?${apiParams}&query=${query}&language=en-US&page=1&include_adult=false`
+  );
+  return responce.data;
+};
