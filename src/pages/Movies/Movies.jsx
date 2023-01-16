@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import { SearchBox } from 'components/SearchBox/SearchBox';
 import { getMovieByName } from 'api/moviesApi';
 
 export const Movies = () => {
   const [searchMovie, setSearchMovie] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
 
   const movieName = searchParams.get('query') ?? '';
 
@@ -32,7 +33,7 @@ export const Movies = () => {
         <ul>
           {searchMovie.map(movie => (
             <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>
+              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
                 {movie.original_title
                   ? movie.original_title
                   : movie.original_name}

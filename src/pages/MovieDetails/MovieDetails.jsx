@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { getMovieById } from 'api/moviesApi';
 import { MovieBox, MovieInfo } from './MovieDetails.styled';
 
@@ -8,7 +8,7 @@ const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 export const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-  // const location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     getMovieById(Number(movieId))
@@ -35,10 +35,11 @@ export const MovieDetails = () => {
     const movieGenres = genres.map(genre => genre.name);
     return movieGenres.join(', ');
   }
-
+  const linkHref = location.state?.from ?? '/';
+  console.log(linkHref);
   return (
     <main>
-      <Link to="/">Go back</Link>
+      <Link to={linkHref}>Go back</Link>
       <MovieBox>
         <div>
           <img
