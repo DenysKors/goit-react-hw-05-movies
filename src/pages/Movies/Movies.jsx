@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import { SearchBox } from 'components/SearchBox/SearchBox';
 import { getMovieByName } from 'api/moviesApi';
 
@@ -15,13 +15,9 @@ export const Movies = () => {
     }
 
     getMovieByName(movieName)
-      .then(data => setSearchMovie(data))
+      .then(data => setSearchMovie(data.results))
       .catch(error => alert('Sorry, please try again'));
   }, [movieName]);
-
-  // if (!searchMovie) {
-  //   return null;
-  // }
 
   const updateQuery = query => {
     const normalizedQuery = query.toLowerCase().trim();
@@ -29,12 +25,22 @@ export const Movies = () => {
     setSearchParams(nextParams);
   };
 
-  const { results } = searchMovie;
-  console.log(results);
-
   return (
     <main>
       <SearchBox onSubmit={updateQuery} />
+      {searchMovie && (
+        <ul>
+          {searchMovie.map(movie => (
+            <li key={movie.id}>
+              <Link to={`/movies/${movie.id}`}>
+                {movie.original_title
+                  ? movie.original_title
+                  : movie.original_name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </main>
   );
 };
