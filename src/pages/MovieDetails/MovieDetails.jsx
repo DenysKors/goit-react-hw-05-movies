@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet } from 'react-router-dom';
 import { getMovieById } from 'api/moviesApi';
 import { MovieBox, MovieInfo } from './Box.styled';
 
