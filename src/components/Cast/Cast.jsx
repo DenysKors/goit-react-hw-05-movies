@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCast } from 'api/moviesApi';
 
-export const MovieCast = () => {
+const ACTOR_PHOTO_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+
+export const Cast = () => {
   const [movieCast, setMovieCast] = useState(null);
   const { movieId } = useParams();
 
@@ -23,9 +25,10 @@ export const MovieCast = () => {
       {cast.map(({ original_name, profile_path, character, id }) => (
         <li key={id}>
           <img
-            src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+            src={`${ACTOR_PHOTO_BASE_URL}${profile_path}`}
             alt={original_name}
             width="100"
+            loading="lazy"
           />
           <p>{original_name}</p>
           <p>Character: {character}</p>

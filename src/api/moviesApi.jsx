@@ -25,3 +25,11 @@ export const getMovieCast = async movieId => {
   );
   return responce.data;
 };
+
+export const getMovieReviews = async movieId => {
+  const apiParams = new URLSearchParams({ api_key: API_KEY });
+  const responce = await axios.get(
+    `https://api.themoviedb.org/3/movie/${movieId}/reviews?${apiParams}&page=1`
+  );
+  return responce.data;
+};

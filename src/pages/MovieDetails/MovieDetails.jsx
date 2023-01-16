@@ -3,6 +3,8 @@ import { useLocation, useParams, Link, Outlet } from 'react-router-dom';
 import { getMovieById } from 'api/moviesApi';
 import { MovieBox, MovieInfo } from './Box.styled';
 
+const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+
 export const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
@@ -28,7 +30,6 @@ export const MovieDetails = () => {
   } = movie;
 
   const releaseYear = release_date ? release_date?.slice(0, 4) : 'No info';
-
   // const backLink = location.state?.from ?? '/home';
 
   function parseGenres(genres) {
@@ -42,8 +43,9 @@ export const MovieDetails = () => {
       <MovieBox>
         <div>
           <img
-            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+            src={`${POSTER_BASE_URL}${poster_path}`}
             alt={original_title}
+            width="250"
           />
         </div>
         <section>
