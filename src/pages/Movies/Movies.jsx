@@ -22,7 +22,7 @@ export const Movies = () => {
 
   const updateQuery = query => {
     const normalizedQuery = query.toLowerCase().trim();
-    const nextParams = normalizedQuery !== '' ? { query } : {};
+    const nextParams = normalizedQuery !== '' ? { query: normalizedQuery } : {};
     setSearchParams(nextParams);
   };
 

@@ -35,8 +35,9 @@ export const MovieDetails = () => {
     const movieGenres = genres.map(genre => genre.name);
     return movieGenres.join(', ');
   }
-  const linkHref = location.state?.from ?? '/';
-  console.log(linkHref);
+
+  const linkHref = location.state?.from ?? '/movies';
+
   return (
     <main>
       <Link to={linkHref}>Go back</Link>
@@ -73,10 +74,14 @@ export const MovieDetails = () => {
         <p>Additional information</p>
         <ul>
           <li>
-            <Link to="cast">Cast</Link>
+            <Link to="cast" state={{ from: linkHref }}>
+              Cast
+            </Link>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <Link to="reviews" state={{ from: linkHref }}>
+              Reviews
+            </Link>
           </li>
         </ul>
       </MovieInfo>
