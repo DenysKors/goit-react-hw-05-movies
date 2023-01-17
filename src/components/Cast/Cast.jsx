@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getMovieCast } from 'api/moviesApi';
 
 const ACTOR_PHOTO_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+const DEFAULT_IMG_URL = 'https://placehold.co/500x750?text=No+Image';
 
 export const Cast = () => {
   const [movieCast, setMovieCast] = useState(null);
@@ -25,11 +26,10 @@ export const Cast = () => {
       {cast.map(({ original_name, profile_path, character, id }) => (
         <li key={id}>
           <img
-            // src={`${ACTOR_PHOTO_BASE_URL}${profile_path}`}
             src={
               profile_path
                 ? ACTOR_PHOTO_BASE_URL + profile_path
-                : 'https://placehold.co/500x750?text=No+Image'
+                : DEFAULT_IMG_URL
             }
             alt={original_name}
             width="100"

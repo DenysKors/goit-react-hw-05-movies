@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { getMovieById } from 'api/moviesApi';
-import { MovieBox, MovieInfo } from './MovieDetails.styled';
+import { MovieBox, MovieInfo, NavItem } from './MovieDetails.styled';
 
 const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+const DEFAULT_IMG_URL = 'https://placehold.co/500x750?text=No+Image';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
@@ -40,11 +41,11 @@ export const MovieDetails = () => {
 
   return (
     <main>
-      <Link to={linkHref}>Go back</Link>
+      <NavItem to={linkHref}>Go back</NavItem>
       <MovieBox>
         <div>
           <img
-            src={`${POSTER_BASE_URL}${poster_path}`}
+            src={poster_path ? POSTER_BASE_URL + poster_path : DEFAULT_IMG_URL}
             alt={original_title}
             width="250"
           />

@@ -3,7 +3,7 @@ import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import { SearchBox } from 'components/SearchBox/SearchBox';
 import { getMovieByName } from 'api/moviesApi';
 
-export const Movies = () => {
+const Movies = () => {
   const [searchMovie, setSearchMovie] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
@@ -32,7 +32,7 @@ export const Movies = () => {
       {searchMovie && (
         <ul>
           {searchMovie.map(movie => (
-            <li key={movie.id}>
+            <li key={movie.id} style={{ marginBottom: 8 }}>
               <Link to={`/movies/${movie.id}`} state={{ from: location }}>
                 {movie.original_title
                   ? movie.original_title
@@ -45,3 +45,5 @@ export const Movies = () => {
     </main>
   );
 };
+
+export default Movies;

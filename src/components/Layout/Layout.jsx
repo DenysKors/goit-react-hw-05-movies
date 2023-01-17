@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Box, Header, NavItem } from './Layout.styled';
 
@@ -12,7 +13,9 @@ export const Layout = () => {
           <NavItem to="/movies">Movies</NavItem>
         </nav>
       </Header>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </Box>
   );
 };
