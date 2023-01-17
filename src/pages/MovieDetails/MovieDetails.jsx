@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { getMovieById } from 'api/moviesApi';
 import { MovieBox, MovieInfo, NavItem } from './MovieDetails.styled';
@@ -17,27 +17,28 @@ export const MovieDetails = () => {
       .catch(error => alert('Sorry, this movie temporarily unavailable'));
   }, [movieId]);
 
+  const genresList = useMemo(() => {
+    if (!movie) {
+      return;
+    }
+    return movie.genres.map(genre => genre.name).join(', ');
+  }, [movie]);
+
   if (!movie) {
     return null;
   }
 
-  const {
-    original_title,
-    release_date,
-    vote_average,
-    overview,
-    genres,
-    poster_path,
-  } = movie;
+  const { original_title, release_date, vote_average, overview, poster_path } =
+    movie;
 
   const releaseYear = release_date ? release_date?.slice(0, 4) : 'No info';
 
-  function parseGenres(genres) {
-    const movieGenres = genres.map(genre => genre.name);
-    return movieGenres.join(', ');
-  }
+  // function parseGenres(genres) {
+  //   const movieGenres = genres.map(genre => genre.name);
+  //   return movieGenres.join(', ');
+  // }
 
-  const linkHref = location.state?.from ?? '/movies';
+  const linkHref = location.state?.from ?? '/';
 
   return (
     <main>
@@ -66,7 +67,7 @@ export const MovieDetails = () => {
               <h4>Genres</h4>
             </li>
             <li>
-              <p>{parseGenres(genres)}</p>
+              <p>{genresList}</p>
             </li>
           </ul>
         </section>
