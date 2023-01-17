@@ -15,9 +15,18 @@ const Movies = () => {
       return;
     }
 
-    getMovieByName(movieName)
-      .then(data => setSearchMovie(data.results))
-      .catch(error => alert('Sorry, please try again'));
+    async function fetchMovieByName() {
+      try {
+        const data = await getMovieByName();
+        setSearchMovie(data.results);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+    fetchMovieByName();
+    // getMovieByName(movieName)
+    //   .then(data => setSearchMovie(data.results))
+    //   .catch(error => alert('Sorry, please try again'));
   }, [movieName]);
 
   const updateQuery = query => {

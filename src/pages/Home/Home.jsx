@@ -6,7 +6,16 @@ export const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
 
   useEffect(() => {
-    getTrendingMovies().then(data => setTrendingMovies(data.results));
+    async function fetchTrendMovies() {
+      try {
+        const data = await getTrendingMovies();
+        setTrendingMovies(data.results);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+    fetchTrendMovies();
+    // getTrendingMovies().then(data => setTrendingMovies(data.results));
   }, []);
 
   return (
