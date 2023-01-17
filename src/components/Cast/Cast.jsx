@@ -25,7 +25,12 @@ export const Cast = () => {
       {cast.map(({ original_name, profile_path, character, id }) => (
         <li key={id}>
           <img
-            src={`${ACTOR_PHOTO_BASE_URL}${profile_path}`}
+            // src={`${ACTOR_PHOTO_BASE_URL}${profile_path}`}
+            src={
+              profile_path
+                ? ACTOR_PHOTO_BASE_URL + profile_path
+                : 'https://placehold.co/500x750?text=No+Image'
+            }
             alt={original_name}
             width="100"
             loading="lazy"
