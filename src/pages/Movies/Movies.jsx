@@ -15,15 +15,15 @@ const Movies = () => {
       return;
     }
 
-    async function fetchMovieByName() {
+    async function fetchMovieByName(movieName) {
       try {
-        const data = await getMovieByName();
+        const data = await getMovieByName(movieName);
         setSearchMovie(data.results);
       } catch (error) {
         console.log(error.message);
       }
     }
-    fetchMovieByName();
+    fetchMovieByName(movieName);
     // getMovieByName(movieName)
     //   .then(data => setSearchMovie(data.results))
     //   .catch(error => alert('Sorry, please try again'));
