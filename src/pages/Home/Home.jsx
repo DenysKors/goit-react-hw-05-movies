@@ -1,6 +1,16 @@
 import { useEffect, useState } from 'react';
-import { getTrendingMovies } from 'api/moviesApi';
 import { Link } from 'react-router-dom';
+
+import { getTrendingMovies } from 'api/moviesApi';
+import { POSTER_BASE_URL, DEFAULT_IMG_URL } from 'constants/imagePath';
+import {
+  MovieItem,
+  Thumb,
+  Image,
+  MovieTitle,
+  ItemsBox,
+  Main,
+} from './Home.styled';
 
 export const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -15,23 +25,38 @@ export const Home = () => {
       }
     }
     fetchTrendMovies();
-    // getTrendingMovies().then(data => setTrendingMovies(data.results));
   }, []);
 
   return (
-    <main>
+    <Main>
       <h2>Trending today</h2>
-      <ul>
+      <ItemsBox>
         {trendingMovies.map(movie => (
-          <li key={movie.id} style={{ marginBottom: 8 }}>
+          <MovieItem key={movie.id}>
             <Link to={`/movies/${movie.id}`}>
-              {movie.original_title
-                ? movie.original_title
-                : movie.original_name}
+              <Thumb>
+                <Image
+                  src={
+                    movie.poster_path
+                      ? POSTER_BASE_URL + movie.poster_path
+                      : DEFAULT_IMG_URL
+                  }
+                  alt={
+                    movie.original_title
+                      ? movie.original_title
+                      : movie.original_name
+                  }
+                />
+                <MovieTitle>
+                  {movie.original_title
+                    ? movie.original_title
+                    : movie.original_name}
+                </MovieTitle>
+              </Thumb>
             </Link>
-          </li>
+          </MovieItem>
         ))}
-      </ul>
-    </main>
+      </ItemsBox>
+    </Main>
   );
 };

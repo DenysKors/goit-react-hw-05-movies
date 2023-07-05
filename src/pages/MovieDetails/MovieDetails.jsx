@@ -3,8 +3,7 @@ import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { getMovieById } from 'api/moviesApi';
 import { MovieBox, MovieInfo, NavItem } from './MovieDetails.styled';
 
-const POSTER_BASE_URL = 'https://image.tmdb.org/t/p/w500';
-const DEFAULT_IMG_URL = 'https://placehold.co/500x750?text=No+Image';
+import { POSTER_BASE_URL, DEFAULT_IMG_URL } from 'constants/imagePath';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();

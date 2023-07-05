@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import bg_image from '../../images/bg-image.jpg';
 
-export const Box = styled.div`
+export const Wrapper = styled.div`
   max-width: 1600px;
   margin: 0 auto;
   padding: 0 15px;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(30, 30, 30) 1%,
+    rgb(0, 0, 0)
+  );
 `;
 
 export const Header = styled.header`
@@ -32,4 +38,17 @@ export const NavItem = styled(NavLink)`
   &.active {
     color: #ff7d32;
   }
+`;
+
+export const Footer = styled.footer`
+  margin: 0 auto;
+  padding: 0 15px;
+  height: calc(100vh - 450px);
+  max-width: 1600px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #000;
+  background-image: url(${bg_image});
 `;

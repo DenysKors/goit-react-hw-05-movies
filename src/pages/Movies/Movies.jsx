@@ -24,9 +24,6 @@ const Movies = () => {
       }
     }
     fetchMovieByName(movieName);
-    // getMovieByName(movieName)
-    //   .then(data => setSearchMovie(data.results))
-    //   .catch(error => alert('Sorry, please try again'));
   }, [movieName]);
 
   const updateQuery = query => {
