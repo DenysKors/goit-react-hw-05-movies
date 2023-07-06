@@ -27,7 +27,7 @@ export const SearchBox = ({ onSubmit }) => {
         type="text"
         autocomplete="off"
         value={query}
-        placeholder="Search movies"
+        placeholder="Find movie by title"
         onChange={inputChange}
       />
       <Button type="submit">Search</Button>

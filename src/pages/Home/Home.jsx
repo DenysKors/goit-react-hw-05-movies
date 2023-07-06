@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import { getTrendingMovies } from 'api/moviesApi';
 import { POSTER_BASE_URL, DEFAULT_IMG_URL } from 'constants/imagePath';
@@ -10,6 +9,8 @@ import {
   MovieTitle,
   ItemsBox,
   Main,
+  PageTitle,
+  MovieLink,
 } from './Home.styled';
 
 export const Home = () => {
@@ -29,11 +30,11 @@ export const Home = () => {
 
   return (
     <Main>
-      <h2>Trending today</h2>
+      <PageTitle>Trending today</PageTitle>
       <ItemsBox>
         {trendingMovies.map(movie => (
           <MovieItem key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>
+            <MovieLink to={`/movies/${movie.id}`}>
               <Thumb>
                 <Image
                   src={
@@ -53,7 +54,7 @@ export const Home = () => {
                     : movie.original_name}
                 </MovieTitle>
               </Thumb>
-            </Link>
+            </MovieLink>
           </MovieItem>
         ))}
       </ItemsBox>

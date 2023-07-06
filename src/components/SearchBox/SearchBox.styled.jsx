@@ -35,7 +35,7 @@ export const Input = styled.input`
 
   &::placeholder {
     font: inherit;
-    font-size: 18px;
+    font-size: 16px;
   }
   &:focus {
     outline: none;

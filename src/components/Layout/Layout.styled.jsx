@@ -19,8 +19,8 @@ export const Header = styled.header`
   justify-content: space-between;
   gap: 12px;
   padding: 8px 10px;
-  margin-bottom: 16px;
-  box-shadow: 0px 15px 10px -15px #111;
+  margin-bottom: 20px;
+  box-shadow: 0px 15px 10px -15px #b5b5b5;
 
   > nav {
     display: flex;
@@ -33,7 +33,7 @@ export const NavItem = styled(NavLink)`
   font-weight: 500;
   font-size: 18px;
   text-decoration: none;
-  color: black;
+  color: #e5e5e5;
 
   &.active {
     color: #ff7d32;
@@ -43,7 +43,7 @@ export const NavItem = styled(NavLink)`
 export const Footer = styled.footer`
   margin: 0 auto;
   padding: 0 15px;
-  height: calc(100vh - 450px);
+  height: 480px;
   max-width: 1600px;
 
   background-position: center;

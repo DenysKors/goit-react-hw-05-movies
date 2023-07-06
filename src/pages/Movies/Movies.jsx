@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, Link, useLocation } from 'react-router-dom';
+
 import { SearchBox } from 'components/SearchBox/SearchBox';
 import { getMovieByName } from 'api/moviesApi';
+
+import { MainBox } from './Movies.styled';
 
 const Movies = () => {
   const [searchMovie, setSearchMovie] = useState(null);
@@ -33,7 +36,7 @@ const Movies = () => {
   };
 
   return (
-    <main>
+    <MainBox>
       <SearchBox onSubmit={updateQuery} />
       {searchMovie && (
         <ul>
@@ -48,7 +51,7 @@ const Movies = () => {
           ))}
         </ul>
       )}
-    </main>
+    </MainBox>
   );
 };
 
