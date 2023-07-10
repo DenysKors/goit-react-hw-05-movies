@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
 export const MainBox = styled.main`
-  margin: 0 auto;
+  width: 100%;
+  min-height: calc(100vh - 530px);
 `;

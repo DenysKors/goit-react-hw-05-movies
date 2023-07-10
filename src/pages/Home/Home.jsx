@@ -14,7 +14,7 @@ import {
 } from './Home.styled';
 
 export const Home = () => {
-  const [trendingMovies, setTrendingMovies] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState(null);
 
   useEffect(() => {
     async function fetchTrendMovies() {
@@ -32,31 +32,32 @@ export const Home = () => {
     <Main>
       <PageTitle>Trending today</PageTitle>
       <ItemsBox>
-        {trendingMovies.map(movie => (
-          <MovieItem key={movie.id}>
-            <MovieLink to={`/movies/${movie.id}`}>
-              <Thumb>
-                <Image
-                  src={
-                    movie.poster_path
-                      ? POSTER_BASE_URL + movie.poster_path
-                      : DEFAULT_IMG_URL
-                  }
-                  alt={
-                    movie.original_title
+        {trendingMovies &&
+          trendingMovies.map(movie => (
+            <MovieItem key={movie.id}>
+              <MovieLink to={`/movies/${movie.id}`}>
+                <Thumb>
+                  <Image
+                    src={
+                      movie.poster_path
+                        ? POSTER_BASE_URL + movie.poster_path
+                        : DEFAULT_IMG_URL
+                    }
+                    alt={
+                      movie.original_title
+                        ? movie.original_title
+                        : movie.original_name
+                    }
+                  />
+                  <MovieTitle>
+                    {movie.original_title
                       ? movie.original_title
-                      : movie.original_name
-                  }
-                />
-                <MovieTitle>
-                  {movie.original_title
-                    ? movie.original_title
-                    : movie.original_name}
-                </MovieTitle>
-              </Thumb>
-            </MovieLink>
-          </MovieItem>
-        ))}
+                      : movie.original_name}
+                  </MovieTitle>
+                </Thumb>
+              </MovieLink>
+            </MovieItem>
+          ))}
       </ItemsBox>
     </Main>
   );

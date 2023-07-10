@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 
 export const Form = styled.form`
+  padding-bottom: 20px;
+  margin: 0 auto;
   display: flex;
-  /* align-items: center; */
   width: 100%;
   max-width: 300px;
-  /* background-color: gray;
-  border-radius: 3px;
-  overflow: hidden; */
 `;
 
 export const Button = styled.button`
@@ -17,9 +15,11 @@ export const Button = styled.button`
   border-radius: 3px;
   border: none;
   cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    background-color: darkgray;
+    background-color: #ff7d32;
     color: white;
   }
 `;
@@ -39,6 +39,6 @@ export const Input = styled.input`
   }
   &:focus {
     outline: none;
-    border-color: cadetblue;
+    border-color: #ff7d32;
   }
 `;

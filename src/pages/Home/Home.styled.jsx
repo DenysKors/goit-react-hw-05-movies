@@ -15,6 +15,8 @@ export const PageTitle = styled.h2`
 `;
 
 export const ItemsBox = styled.ul`
+  padding-bottom: 10px;
+
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -22,10 +24,10 @@ export const ItemsBox = styled.ul`
 `;
 
 export const MovieItem = styled.li`
-  max-width: 260px;
+  width: 260px;
 
   @media screen and (min-width: 1200px) {
-    max-width: 320px;
+    width: 320px;
   }
 `;
 
