@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 export const Header = styled.header`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 12px;
   padding: 8px 10px;
   margin-bottom: 20px;
@@ -24,6 +24,10 @@ export const Header = styled.header`
 
   > nav {
     display: flex;
+  }
+
+  @media screen and (min-width: 768px) {
+    justify-content: space-between;
   }
 `;
 

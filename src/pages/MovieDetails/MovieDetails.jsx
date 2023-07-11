@@ -1,7 +1,17 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { getMovieById } from 'api/moviesApi';
-import { MovieBox, MovieInfo, NavItem } from './MovieDetails.styled';
+import {
+  MovieBox,
+  MovieInfo,
+  NavItem,
+  MovieTitle,
+  MovieImage,
+  Thumb,
+  MovieRating,
+  SubTitle,
+  Text,
+} from './MovieDetails.styled';
 
 import { POSTER_BASE_URL, DEFAULT_IMG_URL } from 'constants/imagePath';
 
@@ -32,47 +42,32 @@ export const MovieDetails = () => {
 
   const releaseYear = release_date ? release_date?.slice(0, 4) : 'No info';
 
-  // function parseGenres(genres) {
-  //   const movieGenres = genres.map(genre => genre.name);
-  //   return movieGenres.join(', ');
-  // }
-
   const linkHref = location.state?.from ?? '/';
 
   return (
     <main>
       <NavItem to={linkHref}>Go back</NavItem>
       <MovieBox>
-        <div>
-          <img
+        <Thumb>
+          <MovieImage
             src={poster_path ? POSTER_BASE_URL + poster_path : DEFAULT_IMG_URL}
             alt={original_title}
             width="250"
           />
-        </div>
+          <MovieRating>
+            <span>rating</span> {(vote_average * 10).toFixed(0)}%
+          </MovieRating>
+        </Thumb>
         <section>
-          <h2>{`${original_title} (${releaseYear})`}</h2>
-          <ul>
-            <li>
-              <p>User score: {(vote_average * 10).toFixed(0)}%</p>
-            </li>
-            <li>
-              <h3>Overview</h3>
-            </li>
-            <li>
-              <p>{overview}</p>
-            </li>
-            <li>
-              <h4>Genres</h4>
-            </li>
-            <li>
-              <p>{genresList}</p>
-            </li>
-          </ul>
+          <MovieTitle>{`${original_title} (${releaseYear})`}</MovieTitle>
+          <SubTitle>Overview:</SubTitle>
+          <Text>{overview}</Text>
+          <SubTitle>Genres:</SubTitle>
+          <Text>{genresList}</Text>
         </section>
       </MovieBox>
       <MovieInfo>
-        <p>Additional information</p>
+        <SubTitle>Additional information:</SubTitle>
         <ul>
           <li>
             <Link to="cast" state={{ from: linkHref }}>

@@ -45,7 +45,6 @@ export const Image = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  user-select: none;
   object-fit: cover;
 
   &:hover,
@@ -77,6 +76,6 @@ export const MovieTitle = styled.p`
   line-height: 1.16;
 
   @media screen and (min-width: 1200px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 `;
