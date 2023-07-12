@@ -44,6 +44,8 @@ export const MovieRating = styled.p`
 `;
 
 export const MovieInfo = styled.div`
+  padding: 10px 0px 10px 0px;
+
   border-top: 2px solid grey;
   border-bottom: 2px solid grey;
 `;
@@ -80,7 +82,7 @@ export const MovieTitle = styled.h2`
 `;
 
 export const SubTitle = styled.h3`
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 
   font-size: 12px;
   font-weight: 400;
@@ -111,5 +113,33 @@ export const Text = styled.p`
 
   @media screen and (min-width: 1200px) {
     font-size: 18px;
+  }
+`;
+
+export const DetailLink = styled(NavLink)`
+  padding-left: 10px;
+  font-size: 12px;
+  color: inherit;
+  text-decoration: none;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    font-size: 18px;
+  }
+`;
+
+export const DetailItem = styled.li`
+  cursor: pointer;
+  color: #e5e5e5;
+  :not(:last-child) {
+    margin-bottom: 8px;
+  }
+
+  &:hover,
+  &:focus {
+    color: #ff7d32;
   }
 `;

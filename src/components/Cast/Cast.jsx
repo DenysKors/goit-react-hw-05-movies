@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCast } from 'api/moviesApi';
 
+import { ItemsWrapper, ActorItem, ActorText, Box } from './Cast.styled';
+
 const ACTOR_PHOTO_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 const DEFAULT_IMG_URL = 'https://placehold.co/500x750?text=No+Image';
 
@@ -22,9 +24,9 @@ export const Cast = () => {
   const { cast } = movieCast;
 
   return (
-    <ul>
+    <ItemsWrapper>
       {cast.map(({ original_name, profile_path, character, id }) => (
-        <li key={id}>
+        <ActorItem key={id}>
           <img
             src={
               profile_path
@@ -32,13 +34,18 @@ export const Cast = () => {
                 : DEFAULT_IMG_URL
             }
             alt={original_name}
-            width="100"
             loading="lazy"
           />
-          <p>{original_name}</p>
-          <p>Character: {character}</p>
-        </li>
+          <Box>
+            <ActorText style={{ textAlign: 'center' }}>
+              {original_name}
+            </ActorText>
+            <ActorText>
+              <span style={{ display: 'block' }}>Character:</span> {character}
+            </ActorText>
+          </Box>
+        </ActorItem>
       ))}
-    </ul>
+    </ItemsWrapper>
   );
 };

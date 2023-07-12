@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { getMovieById } from 'api/moviesApi';
 import {
   MovieBox,
@@ -11,6 +11,8 @@ import {
   MovieRating,
   SubTitle,
   Text,
+  DetailLink,
+  DetailItem,
 } from './MovieDetails.styled';
 
 import { POSTER_BASE_URL, DEFAULT_IMG_URL } from 'constants/imagePath';
@@ -68,17 +70,17 @@ export const MovieDetails = () => {
       </MovieBox>
       <MovieInfo>
         <SubTitle>Additional information:</SubTitle>
-        <ul>
-          <li>
-            <Link to="cast" state={{ from: linkHref }}>
+        <ul style={{ display: 'inline-flex', flexDirection: 'column' }}>
+          <DetailItem>
+            <DetailLink to="cast" state={{ from: linkHref }}>
               Cast
-            </Link>
-          </li>
-          <li>
-            <Link to="reviews" state={{ from: linkHref }}>
+            </DetailLink>
+          </DetailItem>
+          <DetailItem>
+            <DetailLink to="reviews" state={{ from: linkHref }}>
               Reviews
-            </Link>
-          </li>
+            </DetailLink>
+          </DetailItem>
         </ul>
       </MovieInfo>
       <Outlet />
