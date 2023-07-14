@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import WhatshotOutlinedIcon from '@mui/icons-material/WhatshotOutlined';
+
 import { Wrapper, Header, NavItem, Footer } from './Layout.styled';
 
 export const Layout = () => {
@@ -10,7 +12,7 @@ export const Layout = () => {
         <Header>
           <nav>
             <NavItem to="/" end>
-              Home
+              <WhatshotOutlinedIcon />
             </NavItem>
             <NavItem to="/movies">Movie</NavItem>
           </nav>

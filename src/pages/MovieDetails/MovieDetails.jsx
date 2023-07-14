@@ -15,6 +15,9 @@ import {
   DetailItem,
 } from './MovieDetails.styled';
 
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+
 import { POSTER_BASE_URL, DEFAULT_IMG_URL } from 'constants/imagePath';
 
 export const MovieDetails = () => {
@@ -48,7 +51,10 @@ export const MovieDetails = () => {
 
   return (
     <main>
-      <NavItem to={linkHref}>Go back</NavItem>
+      <NavItem to={linkHref}>
+        <ChevronLeftIcon />
+        Go back
+      </NavItem>
       <MovieBox>
         <Thumb>
           <MovieImage
@@ -57,7 +63,7 @@ export const MovieDetails = () => {
             width="250"
           />
           <MovieRating>
-            <span>rating</span> {(vote_average * 10).toFixed(0)}%
+            <ThumbUpIcon /> {(vote_average * 10).toFixed(0)}%
           </MovieRating>
         </Thumb>
         <section>

@@ -38,6 +38,10 @@ export const MovieRating = styled.p`
   right: 0;
   margin: 0;
   padding: 4px 4px;
+
+  display: flex;
+  align-items: center;
+  gap: 3px;
   border-bottom-left-radius: 5px;
 
   background-color: #ff7d32;
@@ -57,7 +61,10 @@ export const NavItem = styled(NavLink)`
   font-size: 18px;
   text-decoration: none;
 
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+
   background-color: lightblue;
 
   border-radius: 3px;
