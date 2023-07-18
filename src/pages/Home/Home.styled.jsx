@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { Pagination } from '@mui/material';
 
 export const Main = styled.main`
   margin: 0 auto;
@@ -77,5 +78,31 @@ export const MovieTitle = styled.p`
 
   @media screen and (min-width: 1200px) {
     font-size: 16px;
+  }
+`;
+
+export const PaginatorWrapper = styled.div`
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+`;
+
+export const Paginator = styled(Pagination)`
+  .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root {
+    color: #ff7d32;
+  }
+  .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    background-color: #e5e5e5;
+    color: #000;
+    &:hover {
+      color: #e5e5e5;
+    }
+  }
+
+  .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root {
+    &:hover {
+      background-color: #ff7d32;
+      color: #000;
+    }
   }
 `;

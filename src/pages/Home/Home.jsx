@@ -11,54 +11,76 @@ import {
   Main,
   PageTitle,
   MovieLink,
+  Paginator,
+  PaginatorWrapper,
 } from './Home.styled';
+
+let totalPages = 1;
 
 export const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState(null);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     async function fetchTrendMovies() {
       try {
-        const data = await getTrendingMovies();
+        const data = await getTrendingMovies(page);
         setTrendingMovies(data.results);
+        setPage(data.page);
+        totalPages = data.total_pages;
+        window.scrollTo(0, 0);
       } catch (error) {
         console.log(error.message);
       }
     }
     fetchTrendMovies();
-  }, []);
+  }, [page]);
+
+  const handleChange = (_, page) => {
+    setPage(page);
+  };
 
   return (
-    <Main>
-      <PageTitle>Trending today</PageTitle>
-      <ItemsBox>
-        {trendingMovies &&
-          trendingMovies.map(movie => (
-            <MovieItem key={movie.id}>
-              <MovieLink to={`/movies/${movie.id}`}>
-                <Thumb>
-                  <Image
-                    src={
-                      movie.poster_path
-                        ? POSTER_BASE_URL + movie.poster_path
-                        : DEFAULT_IMG_URL
-                    }
-                    alt={
-                      movie.original_title
+    <>
+      <Main>
+        <PageTitle>Trending today</PageTitle>
+        <ItemsBox>
+          {trendingMovies &&
+            trendingMovies.map(movie => (
+              <MovieItem key={movie.id}>
+                <MovieLink to={`/movies/${movie.id}`}>
+                  <Thumb>
+                    <Image
+                      src={
+                        movie.poster_path
+                          ? POSTER_BASE_URL + movie.poster_path
+                          : DEFAULT_IMG_URL
+                      }
+                      alt={
+                        movie.original_title
+                          ? movie.original_title
+                          : movie.original_name
+                      }
+                    />
+                    <MovieTitle>
+                      {movie.original_title
                         ? movie.original_title
-                        : movie.original_name
-                    }
-                  />
-                  <MovieTitle>
-                    {movie.original_title
-                      ? movie.original_title
-                      : movie.original_name}
-                  </MovieTitle>
-                </Thumb>
-              </MovieLink>
-            </MovieItem>
-          ))}
-      </ItemsBox>
-    </Main>
+                        : movie.original_name}
+                    </MovieTitle>
+                  </Thumb>
+                </MovieLink>
+              </MovieItem>
+            ))}
+        </ItemsBox>
+      </Main>
+      <PaginatorWrapper>
+        <Paginator
+          page={page}
+          count={totalPages}
+          size="medium"
+          onChange={handleChange}
+        />
+      </PaginatorWrapper>
+    </>
   );
 };
