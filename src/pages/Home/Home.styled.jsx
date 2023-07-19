@@ -88,7 +88,7 @@ export const PaginatorWrapper = styled.div`
 `;
 
 export const Paginator = styled(Pagination)`
-  .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root {
+  /* .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root {
     color: #ff7d32;
   }
   .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
@@ -100,6 +100,24 @@ export const Paginator = styled(Pagination)`
   }
 
   .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root {
+    &:hover {
+      background-color: #ff7d32;
+      color: #000;
+    }
+  } */
+
+  .MuiPaginationItem-root {
+    color: #ff7d32;
+  }
+  .MuiPaginationItem-root.Mui-selected {
+    background-color: #e5e5e5;
+    color: #000;
+    &:hover {
+      color: #e5e5e5;
+    }
+  }
+
+  .MuiPaginationItem-root {
     &:hover {
       background-color: #ff7d32;
       color: #000;

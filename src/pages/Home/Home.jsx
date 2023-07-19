@@ -79,6 +79,18 @@ export const Home = () => {
           count={totalPages}
           size="medium"
           onChange={handleChange}
+          // sx={{
+          //   '& .MuiPaginationItem-root': {
+          //     color: '#ff7d32',
+          //   },
+          //   '& .MuiPaginationItem-root.Mui-selected': {
+          //     backgroundColor: '#e5e5e5',
+          //     color: '#000',
+          //     &:hover: {
+          //       color: '#e5e5e5',
+          //     },
+          //   },
+          // }}
         />
       </PaginatorWrapper>
     </>
