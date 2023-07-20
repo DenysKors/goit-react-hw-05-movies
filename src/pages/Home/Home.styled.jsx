@@ -82,45 +82,26 @@ export const MovieTitle = styled.p`
 `;
 
 export const PaginatorWrapper = styled.div`
+  padding: 15px 0px 15px 0px;
   background-color: #000;
   display: flex;
   justify-content: center;
 `;
 
 export const Paginator = styled(Pagination)`
-  /* .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root {
+  .MuiPaginationItem-root {
     color: #ff7d32;
-  }
-  .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
-    background-color: #e5e5e5;
-    color: #000;
-    &:hover {
-      color: #e5e5e5;
-    }
-  }
-
-  .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root {
     &:hover {
       background-color: #ff7d32;
       color: #000;
     }
-  } */
-
-  .MuiPaginationItem-root {
-    color: #ff7d32;
   }
+
   .MuiPaginationItem-root.Mui-selected {
     background-color: #e5e5e5;
     color: #000;
     &:hover {
       color: #e5e5e5;
-    }
-  }
-
-  .MuiPaginationItem-root {
-    &:hover {
-      background-color: #ff7d32;
-      color: #000;
     }
   }
 `;

@@ -19,7 +19,7 @@ export const Header = styled.header`
   justify-content: center;
   gap: 12px;
   padding: 8px 10px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   box-shadow: 0px 15px 10px -15px #b5b5b5;
 
   > nav {
